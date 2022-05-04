@@ -1,0 +1,104 @@
+:root {
+  --dark: #00332a;
+  --light: #fdffc4;
+  --green: #dbffa2;
+  --blue: #c3fcf2;
+  --orange: #ff7750;
+  --special: #FFFFFF;
+
+  --font-title: "Playfair Display", sans-serif;
+  --font-body: "Assistant", sans-serif;
+}
+
+.darkmode {
+  --dark: #fdffc4;
+  --light: #00332a;
+  --green: #006654;
+  --blue: #8C6BC2;
+  --orange: #ff7750;
+  --special: #006654;
+}
+
+* {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--dark);
+  background: var(--light);
+}
+
+h1 {
+  font-family: var(--font-title);
+  font-size: 6rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  max-width: 45rem;
+}
+
+section {
+  padding: 1rem 4rem;
+}
+
+
+input {
+  color: var(--dark);
+  background: var(--special);
+  border: none;
+  border-radius: 0.4rem;
+  margin: 0 1rem 1rem 0;
+  padding: 0.6rem;
+  min-width: 40rem;
+}
+
+input:focus {
+  outline: solid 0.15rem var(--blue);
+}
+
+button {
+  color: var(--dark);
+  background: var(--orange);
+  border: none;
+  border-radius: 0.4rem;
+  margin-right: 1rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.intro {
+  padding: 8rem 4rem;
+  background: linear-gradient(120deg, var(--green), var(--blue));
+  margin-bottom: 2rem;
+}
+
+.task-item {
+  display: flex;
+}
+
+.actions button {
+  width: 4rem;
+}
+
+.info div {
+  font-size: 3rem;
+}
+
+.dark-mode-toggle {
+  position:absolute;
+  right: 0;
+  top: 0;
+  margin: 1.6rem;
+}

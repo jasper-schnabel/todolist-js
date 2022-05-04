@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Todolist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant&family=Playfair+Display:wght@400;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <button id="dark-mode-toggle" class="dark-mode-toggle">Toggle Dark Mode</button>
+    </header>
+    <main>
+      <section class="intro">
+        <h1>JavaScript Todolist Project</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Fusce ut placerat orci nulla pellentesque dignissim enim sit amet.
+          Nam libero justo laoreet sit amet cursus sit.</p>
+      </section>
+      <section class="todo">
+        <form id="new-task-form">
+          <input type="text" id="new-task-input" class="new-task-input" placeholder="Enter a new task.">
+          <button type="submit" id="new-task-submit">Add task</button>
+        </form>
+        <h2>Tasks</h2>
+        <div id="task-list"></div>
+      </section>
+      <section class="info">
+        <h2>Date and Time</h2>
+        <div id="date-time"></div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
