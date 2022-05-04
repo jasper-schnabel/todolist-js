@@ -1,7 +1,7 @@
 # Todolist
 
 A simple todolist app built with HTML, CSS and JavaScript.
-> Note: This is by far not a perfekt and featureful todolist.
+> Note: This is by far not a perfect and featureful todolist.
 
 ## Features
 
@@ -18,12 +18,12 @@ A simple todolist app built with HTML, CSS and JavaScript.
 ## Reason
 
 I build this tiny webapp to learn and practice HTML, CSS and JavaScript.
-I wanted to get to know CRUD Operations (**C**reate, **R**ead, **U**pdate, **D**elete) and to have fun.
+I wanted to get to know CRUD Operations (**C**reate, **R**ead, **U**pdate, **D**elete) and have fun.
 
 ## Running (Linux)
 
 ```sh
-# Clone the repository and change into it:
+# Clone the repository and change into it
 git clone https://github.com/jasper-schnabel/todolist-js.git
 cd todolist-js
 
