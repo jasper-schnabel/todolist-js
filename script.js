@@ -2,6 +2,9 @@ window.addEventListener('load', () => {
   const form = document.querySelector('#new-task-form');
   const input = document.querySelector('#new-task-input');
   const tasks = document.querySelector('#task-list');
+  let oldValue;
+
+  tasks.addEventListener('click', changeTask);
 
   // prevent the page from realoding on task submit
   form.addEventListener('submit', (e) => {
@@ -24,6 +27,9 @@ window.addEventListener('load', () => {
     contentElement.setAttribute('readonly', 'readonly');
     contentElement.classList.add('task-content');
 
+    // save to local storage
+    saveLocalStorage(input.value);
+
     // clear input after a task has been added
     input.value = '';
 
@@ -39,22 +45,6 @@ window.addEventListener('load', () => {
     editElement.innerHTML = 'Edit';
     deleteElement.innerHTML = 'Delete';
 
-    // button functionality
-    editElement.addEventListener('click', () => {
-      if (editElement.innerHTML == 'Edit') {
-        contentElement.removeAttribute('readonly');
-        contentElement.focus();
-        editElement.innerHTML = 'Save';
-      } else {
-        contentElement.setAttribute('readonly', 'readonly');
-        editElement.innerHTML = 'Edit';
-      }
-    })
-
-    deleteElement.addEventListener('click', () => {
-      tasks.removeChild(taskElement);
-    })
-
     // assemble it all together
     taskElement.appendChild(contentElement);
     actionsElement.appendChild(editElement);
@@ -62,6 +52,68 @@ window.addEventListener('load', () => {
     taskElement.appendChild(actionsElement);
     tasks.appendChild(taskElement);
   })
+
+  // button functionality
+  function changeTask(e) {
+    const taskItem = e.target;
+
+    if (taskItem.classList[0] === 'edit-button') {
+      const editElement = taskItem;
+      const contentElement = taskItem.parentElement.parentElement.childNodes[0];
+
+      if (editElement.innerHTML == 'Edit') {
+        contentElement.removeAttribute('readonly');
+        contentElement.focus();
+        editElement.innerHTML = 'Save';
+        oldValue = contentElement.value;
+        console.log(editElement)
+        console.log(contentElement)
+      } else {
+        changeLocalStorage(contentElement, 'replace');
+        contentElement.setAttribute('readonly', 'readonly');
+        editElement.innerHTML = 'Edit';
+      }
+    } else if (taskItem.classList[0] === 'delete-button') {
+      const taskElement = taskItem.parentElement.parentElement
+      changeLocalStorage(taskElement, 'delete');
+      tasks.removeChild(taskElement);
+    }
+  }
+
+  // save localStorage
+  function saveLocalStorage(task) {
+    let tasks;
+
+    if (localStorage.getItem('tasks') === null) {
+      tasks = [];
+    } else {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  // delete/edit localStorage
+  function changeLocalStorage(task, action) {
+    let tasks;
+
+    if (localStorage.getItem('tasks') === null) {
+      tasks = [];
+    } else {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    if (action === 'delete') {
+      const indexName = task.children[0].value;
+      tasks.splice(tasks.indexOf(indexName), 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } else if (action === 'replace') {
+      const newValue = task.value;
+      tasks.splice(tasks.indexOf(oldValue), 1, newValue);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }
 
   // format date helper
   const dateTimeElement = document.querySelector('#date-time');
