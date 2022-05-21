@@ -33,7 +33,8 @@ firefox index.html
 
 ## Todo
 
-- [ ] save tasks with `localStorage`
+- [x] save tasks with `localStorage`
+- [ ] modularize JavaScript code
 - [ ] make the website responsive
 
 ## Credit
